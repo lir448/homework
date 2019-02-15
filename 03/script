@@ -1,0 +1,6 @@
+#!/bin/bash
+git clone $2 /home/448/$1
+cd /home/448/$1
+mvn package
+rsync -azhe ssh /home/448/$1/target/*.war 35.228.130.42:/var/lib/tomcat8/webapps/
+ssh 35.228.130.42 'service tomcat8 restart'
