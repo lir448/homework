@@ -1,0 +1,5 @@
+#!/bin/bash
+rsync -azhe ssh 35.228.130.42:/var/log/toplog/ /tmp/hw1toplog
+find /tmp/hw1toplog -name "top*log" -exec gzip "{}" \;
+mv /tmp/hw1toplog/top*log.gz /home/448/storage/hw1toplog
+find /home/448/storage/hw1toplog -type f -mtime +2 -exec rm -f {} \;
